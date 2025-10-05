@@ -26,7 +26,7 @@ addEventListener("DOMContentLoaded", async function () {
       const id = e.target.dataset.id;
       if (!confirm("Delete this song?")) return;
 
-      const r = await fetch(`http://localhost:3000/api/songs/${id}`, {
+      const r = await fetch(`https://sdev255-m06-tutorial-backend.onrender.com/api/songs/${id}`, {
         method: "DELETE",
       });
 
