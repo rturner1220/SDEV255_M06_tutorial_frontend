@@ -1,6 +1,6 @@
 addEventListener("DOMContentLoaded", async function () {
   try {
-    const response = await fetch("http://localhost:3000/api/songs");
+    const response = await fetch("https://sdev255-m06-tutorial-backend.onrender.com/api/songs");
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const songs = await response.json();
 
