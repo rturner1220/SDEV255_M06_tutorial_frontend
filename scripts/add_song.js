@@ -11,26 +11,25 @@ async function addSong() {
     genre: document.querySelector("#genre").value
       ? document.querySelector("#genre").value.split(",")
       : [],
+    username: localStorage.getItem("uname"),
   };
 
-  const response = await fetch("https://sdev255-m06-tutorial-backend.onrender.com/api/songs", {
+  const response = await fetch(`${API}/api/songs`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+       // add this if you want server to stamp username from token:
+     "x-auth": localStorage.getItem("token") || ""
     },
-    body: JSON.stringify(song)
+    body: JSON.stringify(song),
   });
 
-  if(response.ok){
-    const results = await response.json()
-    alert("Added song with ID of" + results._id)
+  if (response.ok) {
+    const results = await response.json();
+    alert("Added song with ID of" + results._id);
 
     // Reset the form after song is successfully added
-    document.querySelector("form").reset()
-    document.querySelector("#error").innerHTML = "Cannot add song"
+    document.querySelector("form").reset();
+    document.querySelector("#error").innerHTML = "Cannot add song";
   }
-else {
-    
-}
-
 }

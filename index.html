@@ -1,21 +1,49 @@
 <!doctype html>
-<html>
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Song Front End</title>
-  <script defer src="scripts/api.js"></script>
-  <script defer src="scripts/script.js"></script>
-</head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Songs</title>
 
+  <!-- IMPORTANT: api.js must load before script.js -->
+   <script defer src="scripts/api.js"></script>
+  <script defer src="scripts/script.js"></script>
+  <script defer src="scripts/auth.js"></script>
+  <script defer src="scripts/init.js"></script>
+
+  <style>
+    body { font-family: system-ui, Arial, sans-serif; line-height: 1.45; margin: 16px; }
+    nav { margin-bottom: 1rem; }
+    nav a { margin-right: .75rem; }
+    #logout { float: right; }
+  </style>
+</head>
 <body>
   <nav>
     <a href="index.html">All Songs</a>
     <a href="add_song.html">Add Songs</a>
+    <button id="logout" type="button">Logout</button>
   </nav>
-  <h1>Songs</h1>
- <ul id="list_of_songs"></ul>
-</body>
 
+  <h1>Songs</h1>
+
+  <!-- Your script.js fills this -->
+  <ul id="list_of_songs">
+    <li>Loading…</li>
+  </ul>
+
+  <noscript>
+    <p>Please enable JavaScript to use this app.</p>
+  </noscript>
+
+  <!-- Optional: simple logout (keeps your existing localStorage keys) -->
+  <script>
+    document.getElementById('logout')?.addEventListener('click', () => {
+      localStorage.removeItem('auth');
+      localStorage.removeItem('token');
+      localStorage.removeItem('uname');
+      location.href = 'login.html';
+    });
+  </script>
+</body>
 </html>
