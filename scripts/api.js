@@ -8,7 +8,7 @@
 
   window.API = isLocal
     ? `http://${host}:3000` // your local backend
-    : "https://sdev255-m06-tutorial-backend.onrender.com"; // your Render backend
+    : "https://sdev255-m06-tutorial-backend.onrender.com/"; // your Render backend
 
   console.log("API base:", window.API);
 })();
