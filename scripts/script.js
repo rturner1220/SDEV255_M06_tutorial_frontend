@@ -3,21 +3,25 @@ addEventListener("DOMContentLoaded", async function () {
   if (!list) return;
 
   try {
-    const response = await fetch(`${API}/api/songs`);
+    const response = await fetch(`${API}/api/songs?ts=${Date.now()}`, {
+      cache: "no-store",
+    });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const songs = await response.json();
 
     let html = "";
-    for (let song of songs) {
+    for (const song of songs) {
       const songID = song._id;
       const by = song.username || "(unknown)";
       html += `<li>
-        ${song.title} - ${song.artist} - ${song.username}
+        ${song.title} - ${song.artist} - ${by}
         - <a href="details.html?id=${songID}">Details</a>
         - <a href="edit.html?id=${songID}">Edit Song</a>
         - <a href="#" class="deleteSong" data-id="${songID}">Delete Song</a>
       </li>`;
     }
+
+     list.innerHTML = html || "<li>No songs found</li>";
 
     // Delete (event delegation)
     list.addEventListener("click", async (e) => {

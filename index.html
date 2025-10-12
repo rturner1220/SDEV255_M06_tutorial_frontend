@@ -1,25 +1,38 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Songs</title>
 
   <!-- IMPORTANT: api.js must load before script.js -->
-   <script defer src="scripts/api.js"></script>
-   
+  <script defer src="scripts/api.js"></script>
   <script defer src="scripts/script.js"></script>
-
   <script defer src="scripts/auth.js"></script>
   <script defer src="scripts/init.js"></script>
 
   <style>
-    body { font-family: system-ui, Arial, sans-serif; line-height: 1.45; margin: 16px; }
-    nav { margin-bottom: 1rem; }
-    nav a { margin-right: .75rem; }
-    #logout { float: right; }
+    body {
+      font-family: system-ui, Arial, sans-serif;
+      line-height: 1.45;
+      margin: 16px;
+    }
+
+    nav {
+      margin-bottom: 1rem;
+    }
+
+    nav a {
+      margin-right: .75rem;
+    }
+
+    #logout {
+      float: right;
+    }
   </style>
 </head>
+
 <body>
   <nav>
     <a href="index.html">All Songs</a>
@@ -48,4 +61,5 @@
     });
   </script>
 </body>
+
 </html>
